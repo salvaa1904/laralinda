@@ -3,105 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para o Amor da Minha Vida</title>
+    <title>para o amor da minha vida ❤️</title>
     <style>
         body {
-            background-color: #ffccdd;
-            font-family: Arial, sans-serif;
+            background-color: pink;
             text-align: center;
-            padding: 50px;
-        }
-        .card {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            width: 500px;
-            height: 400px;
-            margin: auto;
-            overflow: hidden; /* Garante que nada saia do quadrado */
+            font-family: Arial, sans-serif;
         }
         h1 {
-            color: #d63384;
-        }
-        p {
-            font-size: 22px;
-            color: #333;
-        }
-        .heart {
-            font-size: 50px;
             color: red;
-            margin-top: -10px; /* Levanta um pouco o coração */
+            font-size: 3rem;
         }
-        .button {
-            background-color: #d63384;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            position: absolute;
+        .hearts {
+            font-size: 2rem;
+            animation: pulse 1s infinite alternate;
         }
-        .button:hover {
-            background-color: #b82e72;
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.2); }
         }
-        .button-container {
-            position: relative;
-            width: 100%;
-            height: 120px;
+        .buttons {
             margin-top: 30px;
         }
-        #yesButton {
-            left: 100px;
-            bottom: 10px;
+        button {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
         }
-        #noButton {
-            left: 250px;
-            bottom: 10px;
-            transition: 0.2s;
+        #yes {
+            background-color: red;
+            color: white;
+        }
+        #yes:hover {
+            background-color: darkred;
+        }
+        #no {
+            background-color: white;
+            color: red;
+            position: absolute;
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Queres voltar a ser o casalzinho lindo e perfeito que éramos? ❤️</h1>
-        <p>Eu amo-te imenso, meu amor! ❤️</p>
-        <p class="heart">❤️</p>
-        <div class="button-container">
-            <button class="button" id="yesButton" onclick="responderSim()">Sim!</button>
-            <button class="button" id="noButton" onmouseover="moverBotao()">Não!</button>
-        </div>
+    <h1>queres ficar comigo para sempree ser muitissimo feliz comigo? ❤️</h1>
+    <div class="hearts">💖💗💕</div>
+    <div class="buttons">
+        <button id="yes" onclick="window.location.href='amor.html'">sim!</button>
+        <button id="no">não!</button>
     </div>
-
     <script>
-        function responderSim() {
-            window.location.href = "amor.html";
-        }
-
-        function moverBotao() {
-            let btn = document.getElementById("noButton");
-            let card = document.querySelector(".card");
-
-            let cardWidth = card.clientWidth;
-            let cardHeight = card.clientHeight;
-
-            let btnWidth = btn.clientWidth;
-            let btnHeight = btn.clientHeight;
-
-            let maxX = cardWidth - btnWidth - 20;
-            let maxY = cardHeight - btnHeight - 50;
-
-            let newX = Math.random() * maxX;
-            let newY = Math.random() * maxY;
-
-            btn.style.left = `${newX}px`;
-            btn.style.top = `${newY}px`;
-        }
+        document.getElementById("no").onmouseover = function() {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            this.style.left = x + "px";
+            this.style.top = y + "px";
+        };
     </script>
 </body>
 </html>
