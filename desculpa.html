@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>para o amor da minha vida!</title>
+    <title>para o amor da minha vida</title>
     <style>
         body {
             background-color: #ffccdd;
@@ -16,10 +16,13 @@
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             position: relative;
             width: 500px; /* Aumentado */
             height: 400px; /* Aumentado */
+            margin: auto;
         }
         h1 {
             color: #d63384;
@@ -48,16 +51,13 @@
         .button-container {
             display: flex;
             justify-content: center;
-            gap: 40px; /* Mantém os botões lado a lado */
+            gap: 20px; /* Mantém espaço entre os botões */
             margin-top: 30px;
-            position: relative;
+            width: 100%;
         }
         .no-button {
-            background-color: #d63384;
             transition: 0.2s;
-            position: absolute;
-            left: 50%; /* Mantém alinhado ao início */
-            transform: translateX(-50%);
+            position: relative;
         }
     </style>
 </head>
@@ -79,18 +79,15 @@
 
         function moverBotao() {
             let btn = document.getElementById("noButton");
-            let container = document.querySelector(".card");
+            let container = document.querySelector(".button-container");
 
-            // Garante que o botão "não" não sai do quadrado
-            let maxX = container.clientWidth - btn.clientWidth - 60; // Movimento horizontal
-            let minX = 20;
+            let maxX = container.clientWidth - btn.clientWidth - 20; // Movimento lateral limitado
+            let minX = 10;
 
-            // Gera nova posição dentro do espaço permitido
-            let x = Math.random() * (maxX - minX) + minX;
+            let newX = Math.random() * (maxX - minX) + minX;
 
-            btn.style.transform = `translateX(${x}px)`;
+            btn.style.transform = `translateX(${newX}px)`;
         }
     </script>
 </body>
 </html>
-
