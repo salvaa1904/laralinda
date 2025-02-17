@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>poara o amor da minha vida</title>
+    <title>para o amor da minha vida</title>
     <style>
         body {
             background-color: #ffccdd;
@@ -52,25 +52,27 @@
         .button-container {
             position: relative;
             width: 100%;
-            height: 150px;
+            height: 100px; /* Ajuste para espaço dos botões */
             margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
         }
         #yesButton {
-            left: 20px;
+            left: 120px; /* Ajustado para mais próximo */
             bottom: 20px;
-            position: absolute;
         }
         #noButton {
             transition: 0.2s;
-            left: 300px; /* Agora começa longe do "Sim" */
-            top: 50px;
+            left: 250px; /* Começa mais próximo do botão "Sim" */
+            top: 20px;
         }
     </style>
 </head>
 <body>
     <div class="card">
         <h1>queres voltar a ser o casalzinho lindo e perfeito que éramos? ❤️</h1>
-        <p>eu amo-te imenso, meu amor! ❤️</p>
+        <p>eu amote imenso, meu amor! ❤️</p>
         <p class="heart">❤️</p>
         <div class="button-container">
             <button class="button" id="yesButton" onclick="responderSim()">sim!</button>
@@ -85,28 +87,13 @@
 
         function moverBotao() {
             let btn = document.getElementById("noButton");
-            let yesButton = document.getElementById("yesButton");
             let card = document.querySelector(".card");
 
-            let cardRect = card.getBoundingClientRect();
-            let yesRect = yesButton.getBoundingClientRect();
-            let btnWidth = btn.clientWidth;
-            let btnHeight = btn.clientHeight;
+            let cardWidth = card.clientWidth - btn.clientWidth - 20;
+            let cardHeight = card.clientHeight - btn.clientHeight - 20;
 
-            let maxX = cardRect.width - btnWidth - 20;
-            let maxY = cardRect.height - btnHeight - 20;
-
-            let newX, newY;
-
-            do {
-                newX = Math.random() * maxX;
-                newY = Math.random() * maxY;
-            } while (
-                newX < yesRect.left - cardRect.left + yesButton.clientWidth &&
-                newX + btnWidth > yesRect.left - cardRect.left &&
-                newY < yesRect.top - cardRect.top + yesButton.clientHeight &&
-                newY + btnHeight > yesRect.top - cardRect.top
-            );
+            let newX = Math.random() * cardWidth;
+            let newY = Math.random() * (cardHeight - 100) + 100; // Mantém dentro do quadrado branco
 
             btn.style.left = `${newX}px`;
             btn.style.top = `${newY}px`;
