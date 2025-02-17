@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ara o amor da minha vida</title>
+    <title>para o amor da minha vida</title>
     <style>
         body {
             background-color: #ffccdd;
@@ -20,8 +20,8 @@
             flex-direction: column;
             align-items: center;
             position: relative;
-            width: 500px; /* Aumentado */
-            height: 400px; /* Aumentado */
+            width: 500px;
+            height: 400px;
             margin: auto;
         }
         h1 {
@@ -43,21 +43,24 @@
             font-size: 20px;
             border-radius: 10px;
             cursor: pointer;
-            position: relative;
+            position: absolute;
         }
         .button:hover {
             background-color: #b82e72;
         }
         .button-container {
-            display: flex;
-            justify-content: space-between; /* Mantém o "Sim" à esquerda e "Não" à direita */
-            width: 80%; /* Ajusta o tamanho do container */
+            position: relative;
+            width: 100%;
+            height: 100px;
             margin-top: 30px;
-            position: relative;
         }
-        .no-button {
+        #yesButton {
+            left: 25%;
+            bottom: 10px;
+            position: absolute;
+        }
+        #noButton {
             transition: 0.2s;
-            position: relative;
         }
     </style>
 </head>
@@ -67,8 +70,8 @@
         <p>eu amo-te imenso, meu amor! ❤️</p>
         <p class="heart">❤️</p>
         <div class="button-container">
-            <button class="button" onclick="responderSim()">sim!</button>
-            <button class="button no-button" id="noButton" onmouseover="moverBotao()">não!</button>
+            <button class="button" id="yesButton" onclick="responderSim()">sim!</button>
+            <button class="button" id="noButton" onmouseover="moverBotao()">não!</button>
         </div>
     </div>
 
@@ -79,14 +82,32 @@
 
         function moverBotao() {
             let btn = document.getElementById("noButton");
-            let container = document.querySelector(".button-container");
+            let yesButton = document.getElementById("yesButton");
+            let card = document.querySelector(".card");
 
-            let maxX = container.clientWidth - btn.clientWidth - 10; // Movimento limitado horizontalmente
-            let minX = 10;
+            let cardWidth = card.clientWidth;
+            let cardHeight = card.clientHeight;
+            let btnWidth = btn.clientWidth;
+            let btnHeight = btn.clientHeight;
+            let yesBtnRect = yesButton.getBoundingClientRect();
 
-            let newX = Math.random() * (maxX - minX) + minX;
+            let maxX = cardWidth - btnWidth - 40;
+            let maxY = cardHeight - btnHeight - 100;
 
-            btn.style.transform = `translateX(${newX}px)`;
+            let newX, newY;
+
+            do {
+                newX = Math.random() * maxX;
+                newY = Math.random() * maxY;
+            } while (
+                newX < yesBtnRect.left - card.getBoundingClientRect().left + yesButton.clientWidth &&
+                newX + btnWidth > yesBtnRect.left - card.getBoundingClientRect().left &&
+                newY < yesBtnRect.top - card.getBoundingClientRect().top + yesButton.clientHeight &&
+                newY + btnHeight > yesBtnRect.top - card.getBoundingClientRect().top
+            );
+
+            btn.style.left = `${newX}px`;
+            btn.style.top = `${newY}px`;
         }
     </script>
 </body>
