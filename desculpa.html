@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>para o amor da minha vida</title>
+    <title>ara o amor da minha vida</title>
     <style>
         body {
             background-color: #ffccdd;
@@ -50,10 +50,10 @@
         }
         .button-container {
             display: flex;
-            justify-content: center;
-            gap: 20px; /* Mantém espaço entre os botões */
+            justify-content: space-between; /* Mantém o "Sim" à esquerda e "Não" à direita */
+            width: 80%; /* Ajusta o tamanho do container */
             margin-top: 30px;
-            width: 100%;
+            position: relative;
         }
         .no-button {
             transition: 0.2s;
@@ -81,7 +81,7 @@
             let btn = document.getElementById("noButton");
             let container = document.querySelector(".button-container");
 
-            let maxX = container.clientWidth - btn.clientWidth - 20; // Movimento lateral limitado
+            let maxX = container.clientWidth - btn.clientWidth - 10; // Movimento limitado horizontalmente
             let minX = 10;
 
             let newX = Math.random() * (maxX - minX) + minX;
