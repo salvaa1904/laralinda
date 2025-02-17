@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>para o amor da minha vida</title>
+    <title>para o amor da minha vida!</title>
     <style>
         body {
             background-color: #ffccdd;
@@ -56,39 +56,41 @@
             background-color: #d63384;
             transition: 0.2s;
             position: absolute;
+            left: 50%; /* Mantém alinhado ao início */
+            transform: translateX(-50%);
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>amor queres voltar a ser o casal lindo e perfeito que éramos? ❤️</h1>
-        <p>eu amote imenso, meu amor! ❤️</p>
+        <h1>queres voltar a ser o casalzinho lindo e perfeito que éramos? ❤️</h1>
+        <p>eu amo-te imenso, meu amor! ❤️</p>
         <p class="heart">❤️</p>
         <div class="button-container">
             <button class="button" onclick="responderSim()">sim!</button>
-            <button class="button no-button" id="noButton" onmouseover="moverBotao()">não</button>
+            <button class="button no-button" id="noButton" onmouseover="moverBotao()">não!</button>
         </div>
     </div>
 
     <script>
         function responderSim() {
-            window.location.href = "amor.html"; // Redireciona para outra página
+            window.location.href = "amor.html"; // Redireciona para a outra página
         }
 
         function moverBotao() {
             let btn = document.getElementById("noButton");
             let container = document.querySelector(".card");
 
-            // Obtém limites do quadrado branco
-            let maxX = container.clientWidth - btn.clientWidth - 50;
-            let maxY = container.clientHeight - btn.clientHeight - 120; // Mantém dentro da área dos botões
+            // Garante que o botão "não" não sai do quadrado
+            let maxX = container.clientWidth - btn.clientWidth - 60; // Movimento horizontal
+            let minX = 20;
 
-            // Gera nova posição dentro dos limites
-            let x = Math.random() * maxX;
-            let y = Math.random() * maxY + 150; // Mantém na parte inferior da caixa
+            // Gera nova posição dentro do espaço permitido
+            let x = Math.random() * (maxX - minX) + minX;
 
-            btn.style.transform = `translate(${x}px, ${y}px)`;
+            btn.style.transform = `translateX(${x}px)`;
         }
     </script>
 </body>
 </html>
+
