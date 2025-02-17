@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>para o meu amor</title>
+    <title>para o amor da minha vida</title>
     <style>
         body {
             background-color: #ffccdd;
@@ -14,19 +13,19 @@
         }
         .card {
             background: white;
-            padding: 30px;
+            padding: 40px;
             border-radius: 15px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             display: inline-block;
             position: relative;
-            width: 450px;
-            height: 350px;
+            width: 500px; /* Aumentado */
+            height: 400px; /* Aumentado */
         }
         h1 {
             color: #d63384;
         }
         p {
-            font-size: 20px;
+            font-size: 22px;
             color: #333;
         }
         .heart {
@@ -37,8 +36,8 @@
             background-color: #d63384;
             color: white;
             border: none;
-            padding: 10px 20px;
-            font-size: 18px;
+            padding: 12px 25px;
+            font-size: 20px;
             border-radius: 10px;
             cursor: pointer;
             margin: 10px;
@@ -50,24 +49,21 @@
         .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+            gap: 30px;
+            margin-top: 30px;
             position: relative;
-            margin-top: 20px;
         }
         .no-button {
             background-color: #d63384;
             position: absolute;
-            position: relative;
             transition: 0.2s;
-            left: 120px;
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>queres voltar a ser o casalzinho lindo e perfeito que eramos?❤️</h1>
-        <p>eu amo-te imenso, meu amor!❤️</p>
+        <h1>queres voltar a ser o casalzinho lindo e perfeito que éramos? ❤️</h1>
+        <p>eu amo-te imenso, meu amor! ❤️</p>
         <p class="heart">❤️</p>
         <div class="button-container">
             <button class="button" onclick="responderSim()">sim!</button>
@@ -77,17 +73,18 @@
 
     <script>
         function responderSim() {
-            alert("Eu amo-te imenso, meu amor! 💕"); 
+            window.location.href = "https://salvaa1904.github.io/pedido/amor.html"; 
         }
+
         function moverBotao() {
             let btn = document.getElementById("noButton");
-            let container = document.querySelector(".button-container");
-            let maxX = container.clientWidth - btn.clientWidth - 20;
-            let maxY = container.clientHeight - btn.clientHeight;
+            let container = document.querySelector(".card");
+            let maxX = container.clientWidth - btn.clientWidth - 50;
+            let maxY = container.clientHeight - btn.clientHeight - 50;
+
             let x = Math.random() * maxX;
             let y = Math.random() * maxY;
-            btn.style.left = x + "px";
-            btn.style.top = y + "px";
+
             btn.style.transform = `translate(${x}px, ${y}px)`;
         }
     </script>
