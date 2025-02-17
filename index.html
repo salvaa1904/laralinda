@@ -40,7 +40,6 @@
             font-size: 20px;
             border-radius: 10px;
             cursor: pointer;
-            margin: 10px;
             position: relative;
         }
         .button:hover {
@@ -49,41 +48,44 @@
         .button-container {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 40px; /* Mantém os botões lado a lado */
             margin-top: 30px;
             position: relative;
         }
         .no-button {
             background-color: #d63384;
-            position: absolute;
             transition: 0.2s;
+            position: absolute;
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>queres voltar a ser o casalzinho lindo e perfeito que éramos? ❤️</h1>
-        <p>eu amo-te imenso, meu amor! ❤️</p>
+        <h1>amor queres voltar a ser o casal lindo e perfeito que éramos? ❤️</h1>
+        <p>eu amote imenso, meu amor! ❤️</p>
         <p class="heart">❤️</p>
         <div class="button-container">
             <button class="button" onclick="responderSim()">sim!</button>
-            <button class="button no-button" id="noButton" onmouseover="moverBotao()">Não</button>
+            <button class="button no-button" id="noButton" onmouseover="moverBotao()">não</button>
         </div>
     </div>
 
     <script>
         function responderSim() {
-            window.location.href = "https://salvaa1904.github.io/pedido/amor.html"; 
+            window.location.href = "amor.html"; // Redireciona para outra página
         }
 
         function moverBotao() {
             let btn = document.getElementById("noButton");
             let container = document.querySelector(".card");
-            let maxX = container.clientWidth - btn.clientWidth - 50;
-            let maxY = container.clientHeight - btn.clientHeight - 50;
 
+            // Obtém limites do quadrado branco
+            let maxX = container.clientWidth - btn.clientWidth - 50;
+            let maxY = container.clientHeight - btn.clientHeight - 120; // Mantém dentro da área dos botões
+
+            // Gera nova posição dentro dos limites
             let x = Math.random() * maxX;
-            let y = Math.random() * maxY;
+            let y = Math.random() * maxY + 150; // Mantém na parte inferior da caixa
 
             btn.style.transform = `translate(${x}px, ${y}px)`;
         }
